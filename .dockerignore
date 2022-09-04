@@ -1,0 +1,9 @@
+.env
+Dockerfile
+.dockerignore
+# TODO: see if we need to not ignore node modules
+node_modules
+npm-debug.log
+README.md
+.next
+.git
