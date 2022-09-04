@@ -12,4 +12,5 @@ services:
       - "3000:3000"
     image: t3-app
     environment:
-      - DATABASE_URL=postgresql://postgres:changeme@localhost:5432/t3docker1?schema=public
+      # If you are running your database on localhost in dev, replace `localhost` with `host.docker.internal`
+      - DATABASE_URL=postgresql://postgres:changeme@host.docker.internal:5432/t3docker1?schema=public

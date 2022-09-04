@@ -11,6 +11,7 @@ WORKDIR /app
 
 # Install dependencies based on the preferred package manager
 COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
+COPY prisma ./
 RUN \
   if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
   elif [ -f package-lock.json ]; then npm ci; \
@@ -27,7 +28,7 @@ RUN \
 FROM --platform=linux/amd64 node:16-alpine AS builder
 
 ARG NEXT_PUBLIC_FOO
-ARG BAR
+ARG DATABASE_URL
 
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
